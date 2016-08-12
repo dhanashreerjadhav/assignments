@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>My First JavaScript Page</title>
+</head>
+<body id="main">
+	<center>
+		<b><font size=5 >CHANGE THE BACKGROUND COLOR ACCORDING TO YOUR SELECTION</font></b>
+		<br><br>
+		<b>Select the Background Color :</b>
+		<select id="dropdown" onchange="func()"></center>
+			<option value="">-------Select-------</option>
+			<option value="#00FFFF">Cyan</option>
+			<option value="#808080">Grey</option>
+			<option value="#808000">Olive</option>
+			<option value="#FFA500">Orange</option>
+			<option value="#00FF00">Lime</option>
+			<option value="#8B008B">Magenta</option>
+			<option value="#FFC0CB">Pink</option>
+			<option value="#FFFFF0">Ivory</option>
+			<option value="#F0FFFF">Azure</option>
+			<option value="#FFF0F5">Lavender Blush</option>
+		</select>
+	<div class="division">
+		<img class="image1" src="nature.jpg" style="height:500px;width:500px;margin:40px;padding-left:50px;"/>
+	</div>
+	<script>
+		function func()
+		{
+			var color=document.getElementById("dropdown").value;
+			document.getElementById("main").style.backgroundColor=color;	
+		}
+	</script>
+</body>
+</html>

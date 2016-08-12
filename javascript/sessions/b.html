@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body>
+<input value="open window" type="button" onclick="open()"/>
+<input value="close window" type="button" onclick="close()"/>
+<input value="blur window" type="button" onclick="blur()"/>
+<script>
+var window1;
+function open(){
+alert("*");
+window1=window.open("","window1","width=200,height=200");
+}
+function close(){
+window1.close();
+}
+function blur(){
+window1.blur();
+}
+</script>
+</body>
+</html>

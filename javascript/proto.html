@@ -1,0 +1,48 @@
+<html>
+<head>
+</head>
+<body>
+	<script>
+		//Create object prototype
+		/*function Animal(type,color,name){     
+			this.type=type;
+			this.color=color;
+			this.name=name;
+			
+		}
+		Animal.prototype.voice=function(){
+				alert("Voice....");
+			}
+			console.log(Animal.voice);
+		var cat=new Animal('omnivorous','white','Cat'); 		//Create object of the prototype
+		var deer=new Animal('herbivorous','brown','Deer');
+		//Animal.voice();
+		/*console.log(deer);
+		console.log(cat.voice());
+		alert("hello"+cat);
+		*/
+		//deer.voice(); 
+		/*cat.voice=function(name){           //Function overwritten from the parent class.
+			alert("Cat Meows..."+this.name);
+		}
+		cat.voice();
+		 deer.voice();     
+*/
+		/*console.log(cat.__proto__);        //gives parent object inherited from Animal
+		console.log(cat.__proto__.__proto__);    //gives hierarchical object
+		console.log(cat.__proto__.__proto__.__proto__);  //gives null
+		
+		cat.likes='milk';   //a new property added to cat object
+		console.log(cat);
+		
+		Animal.prototype.lives="Forest";         //a new property added to the prototype
+		console.log(Animal.prototype);
+		*/
+		var bird = { eats: true }
+		var crow = { flies: true }
+		crow.__proto__ = bird               // inherit
+		console.log(crow.eats) 
+	    
+	</script>
+</body>
+</html>

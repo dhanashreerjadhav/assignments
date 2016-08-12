@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+<p id="demo"></p>
+<button onclick="history1()">history</button>
+
+<button onclick="history2()">history</button>
+<script>
+function history1(){
+alert(history.length);
+}
+function history2(){
+window.history.back();
+}
+/*var txt="";
+txt+="<p>"+history.back()+"</p>";
+txt+="<p>"+history.forward()+"</p>";
+
+txt+="<p>"+navigator.cookieEnabled+"</p>";
+txt+="<p>"+navigator.language+"</p>";
+txt+="<p>"+navigator.onLine+"</p>";
+document.getElementById("demo").innerHTML=txt;*/
+</script>
+</body>
+</html>

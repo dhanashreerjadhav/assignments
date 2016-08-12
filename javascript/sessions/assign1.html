@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body id="back">
+	<div style="height:200px,width:200px,background-image:url("images.jpg"),background-repeat:no-repeat">
+
+	</div>
+	<select id="drop" onchange="func()">
+		<option value="blue">BLUE</option>
+		<option value="green">GREEN</option>
+		<option value="yellow">YELLOW</option>
+	</select>
+	<script>
+	function func()
+	{
+	var color=document.getElementById("drop").value;
+	document.getElementById("back").style.backgroundColor=color;
+	}
+	</script>
+</body>
+
+</html>

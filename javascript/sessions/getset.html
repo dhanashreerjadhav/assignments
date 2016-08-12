@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+'use strict';
+var cat={
+	name:{first:"FLUFFY",last:"Schinder"},
+	color:"White"
+};
+Object.defineProperty(cat,'fullname',{
+		get:function()
+					{return this.name.first+" "+this.name.last},
+		set:function(val)
+			{
+					var value=val.split(' ');
+					this.name.first=value[0];
+					this.name.last=value[1];
+				}
+				}
+				);
+				console.log(cat.fullname);
+				console.log(cat);
+				</script>
+</body>
+</html>

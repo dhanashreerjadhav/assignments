@@ -1,0 +1,17 @@
+%inherit{
+    min-width:100px;
+    padding:1em;
+    border-radius:1em;
+}
+
+.btn--twitter{
+    @extend %inherit;
+    color:#fff;
+    background:#55acee;
+}
+
+.btn--facebook{
+    @extend %inherit;
+    color:#fff;
+    background:#3b5998;
+}

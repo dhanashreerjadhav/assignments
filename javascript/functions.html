@@ -1,0 +1,104 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+	var noofobject=0;
+	var noofobject1=0;
+	
+	//Function AnimalTestUser which returns the object
+	function AnimalTestUser(user){
+		if(arguments.length>1)         //check to see if no of arguments passed are greater then one.
+		{
+			var remainingArgs=[];      //array to store arguments after the first one.
+		    for(i=1;i<arguments.length;i++)   
+			{
+				remainingArgs[i-1]=arguments[i];    //storing the remaining arguments other than first in array. 
+			}
+			var objects={'username':arguments[0],otherArgs:remainingArgs}; //creating object with first argument as username and the remaining as an array to the property otherArgs.
+		}
+		else{
+				var objects={'username':user};    //if only one argument passed store it as username property to the object.
+		}
+		return objects;    //return the object.
+	}
+	var testSheep = AnimalTestUser('CottonBall');    //call to function AnimalTestUser with a single argument.
+	//console.log(testSheep); 
+	var testSheep = AnimalTestUser('CottonBall', {'loves dancing': true}, [1,2,3] );  ////call to function AnimalTestUser with no of arguments.
+	//console.log(testSheep); 
+	
+	
+	//Function AnimalCreator
+	function AnimalCreator(){
+			this.username=arguments[0];   //first argument to function as a value to username property.
+			this.species=arguments[1];	//second argument to function as a value to species property.
+			this.tagline=arguments[2];   //third argument to function as a value to tagline property.
+			this.noises=arguments[3];	//fourth argument to function as a value to noises property.
+			this.friends=[];            //fifth property as an empty array.
+			//var animal={'username':username,'species':species,'noises':noises,'tagline':tagline,'friends':friends};  //Assign values to the properties.
+			//return animal;    //return object.
+		
+	}
+	var sheep = new AnimalCreator('Cloud', 'sheep', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
+	console.log(sheep);
+	var cow = new AnimalCreator('Moo', 'cow', 'Yipppee!', ['mahh', 'mooo', 'booo']);
+	var llama =  new AnimalCreator('Zeny', 'llama', 'Yeaaahh!', ['sneigh', 'bark', 'sigh']);
+	
+	//Comment the below addfriend() function if want to see the functioning of this method.
+	//Function addFriend that takes second argument and adds it as a friend property to the first argument object.
+	function addFriend()
+	{
+		arguments[0].friends[noofobject]=arguments[1];     //stores second argument object as the friends property to first argument object.
+		noofobject++;     //Increment the count of the friends property value to be stored which is declared globally so the next time when friend is added it does not overwrite the previous one.. 
+	}
+	addFriend(sheep, cow);
+	//console.log(sheep);
+	
+	addFriend(sheep, llama);
+	//console.log(sheep);
+	
+	//Need to comment the above addfriend() function if want to see the functioning of this method.
+	//Function addFriend that takes second argument and adds its username property value as a friend property to the first argument object.
+	/*function addFriend()
+	{
+		var user=arguments[1];      //store objectname of first argument.
+		var user1=user.username;    //store username property's value of the object.
+		arguments[0].friends[noofobject1]=user1;   //store the username value as the friend property's value of second argument object.
+		noofobject1++;     //Increment the count of the friends property value to be stored which is declared globally so the next time when friend is added it does not overwrite the previous one. 
+	}
+	addFriend(sheep, cow);
+    console.log(sheep);
+	addFriend(sheep, llama);
+	console.log(sheep);
+	addFriend(cow,sheep);
+	addFriend(llama,cow);
+	*/
+	
+	var myFarm=[sheep,cow,llama];   //Collection myFarm.
+	//console.log(myFarm);
+	var noofanimals=myFarm.length;   //Get the length of the collection.
+	
+	//Function to add matches property to the objects in myFarm collection.
+	function addMatchesArray(){
+		for(j=0;j<myFarm.length;j++)    //Loop through the collection to add the property to every object in the collection.
+		{
+			Object.defineProperty(myFarm[j],'matches',{value:[]});   //Add the property using Object.defineProperty function.
+		}
+	}
+	addMatchesArray();
+	//console.log(myFarm[0]);
+	
+	//Function to select a name from friends property and store it as a value to the matches property.
+	function giveMatches(){
+		for(j=0;j<myFarm.length;j++)   //Loop through the myFarm Collection.
+		{
+			myFarm[j].matches[j]=myFarm[j].friends[j]   //store the first value from friends property array to the matches property.
+		}
+	}
+	giveMatches();
+	//console.log(myFarm[0]); 
+	
+	
+</script>
+</body>
+</html>

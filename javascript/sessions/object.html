@@ -1,0 +1,43 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+	/*var cat={
+	1:"Fluffy",
+		color:"white",
+		'eye color':"black"
+		
+	};
+	cat.name="sfsd";
+
+	//for(var i in cat)
+	//console.log(cat[1]);
+	//console.log(cat['eye color']);
+	function cat12(){
+	this.name="asd",
+	this.color="asdads"
+	};
+	function cat12(n,c){
+	this.name=n,
+	this.color=c
+	};
+	var cat1=new cat12();
+	//console.log(cat1);
+	//document.writeln(cat1.color);
+	
+	var cat2=new  cat12("cvbc","sdf");
+	//console.log(cat2);
+	//document.writeln(cat2.name);
+	*/
+	var cat={name:"ads",color:"asdasd"};
+	var cat1=Object.create(cat.prototype,
+	{
+	name:{value:"Fluffy"
+			},
+	colr:{value:"White"
+			}
+		});
+		console.log(cat1);
+</script>
+</body>
