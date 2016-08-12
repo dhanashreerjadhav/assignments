@@ -1,0 +1,23 @@
+Official Facebook Logo
+https://www.facebookbrand.com/
+
+Official Twitter Logo
+https://about.twitter.com/press/brand-assets
+
+Official Google Plus Logo
+https://developers.google.com/+/branding-guidelines
+
+Official Pintrist Logo
+https://business.pinterest.com/en/brand-guidelines
+
+
+
+
+DOWNLOAD Font Awesome
+http://fortawesome.github.io/Font-Awesome/
+
+VIEW the cheat sheet of icons
+http://fortawesome.github.io/Font-Awesome/cheatsheet/
+
+HTML to add an icon 
+<span class="fa fa-phone fa-fw"></span>

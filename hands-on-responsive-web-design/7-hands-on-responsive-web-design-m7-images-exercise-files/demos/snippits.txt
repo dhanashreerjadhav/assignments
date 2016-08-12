@@ -1,0 +1,8 @@
+<picture>
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    <source srcset="desktop.jpg" media="(min-width: 1140px)">
+    <source srcset="tablet.jpg" media="(min-width: 640px)">
+    <source srcset="phone.jpg">
+    <!--[if IE 9]></video><![endif]-->
+    <img srcset="phone.jpg" alt="description">
+</picture>

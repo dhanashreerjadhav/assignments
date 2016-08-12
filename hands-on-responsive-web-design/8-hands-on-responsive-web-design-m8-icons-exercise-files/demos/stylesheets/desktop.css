@@ -1,0 +1,39 @@
+@media only screen and (min-width: 1140px) {
+
+
+
+/*-----INSIDE THE WRAPPERS-----*/
+	header, nav, .row, footer {
+		max-width: 1140px;
+		margin: 0 auto; /*centers everything on the page*/
+	}
+
+/*-----HEADER -----*/
+
+
+
+
+
+
+
+
+/*-----NAVIGATION -----*/	
+nav ul li {width: auto;}
+nav ul li a {padding: .2em 1.5em;}
+
+	
+	
+	
+
+/*-----CONTENT -----*/
+
+
+
+	
+	
+
+
+
+
+
+} /*end of the media query */

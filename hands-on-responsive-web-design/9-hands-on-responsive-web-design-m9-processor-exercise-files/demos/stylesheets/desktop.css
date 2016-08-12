@@ -1,0 +1,102 @@
+@media only screen and (min-width: 1140px) {
+
+/*-----COLOR BAR -----*/
+	div#colorbar {
+		background-color:#e22121;
+		height: .5em;
+	}
+
+/*-----INSIDE THE WRAPPERS-----*/
+	header, nav, .row, footer {
+		max-width: 1140px;
+		margin: 0 auto; /*centers everything on the page*/
+	}
+
+/*-----HEADER -----*/
+	header {
+		position: relative;
+		padding-top: 2em;
+		padding-bottom:1em;
+	}
+	header a.tel {
+		top: 1.25em; 
+		font-weight: 300;
+	}
+
+/*----- SOCIAL -----*/
+	header .social {
+		top: 3em;
+
+	}
+
+
+
+
+/*-----NAVigation -----*/
+	#navWrapper {
+		background-color: #e22121;	
+	}
+
+	nav ul {
+		margin-left: 2%;
+		border-left:solid 1px rgba(255,255,255,0.3);
+	}
+	
+	/*main menu items float side by side*/
+	nav ul li {
+		float: left;
+	}
+	
+	nav ul li a { 
+		display:block;
+		color: #FFF;
+		text-decoration: none;
+		border-right:solid 1px rgba(255,255,255,0.3);
+		font-size: .9em;
+		padding: .7em .9em;
+		
+		/*transition*/
+		transition: background 0.3s linear;
+	}
+	nav ul li a:hover {background-color: rgba(0,0,0,0.1)}
+	nav ul li.selected a {background-color: rgba(0,0,0,0.3)}
+	
+	 /*rules for the sub menu items*/
+	nav ul li ul {
+		z-index:99;
+		position: absolute;
+		margin: 0;
+		left: -999em; /* pushes the menu way off to the side */
+		width: 10em;
+		background-color: #B00;
+	}
+	nav ul li ul li { /* overides the float and line from the parent ul */	
+		border-bottom: 1px solid rgba(0,0,0,0.3);
+		float: none;
+		border-right: none;
+	}
+	
+	nav li:hover ul { /* this displays the menus as drop downs  */
+		left: auto;
+	}
+
+
+	
+	
+	
+
+
+/*----- PHOTOS -----*/
+	figure.column-3 {
+		width: 21%;
+	}
+	
+
+	
+	
+
+
+
+
+
+} /*end of the media query */

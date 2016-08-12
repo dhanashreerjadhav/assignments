@@ -1,0 +1,14 @@
+@media only screen and (min-width: 1140px) {
+
+header,nav,.row ,footer{
+	max-width:1140px;
+	margin:0 auto;
+}
+nav ul li a{
+	transition:background .3s linear;
+}
+
+nav ul li a:hover{
+	background-color:#f7200;
+}
+} /*end of the media query */

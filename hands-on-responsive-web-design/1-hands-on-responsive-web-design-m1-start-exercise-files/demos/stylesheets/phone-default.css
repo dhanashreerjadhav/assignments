@@ -1,0 +1,14 @@
+html {-webkit-text-size-adjust: none; }  //PREVENT TEXT FROM ADJUSTING ITSELF
+
+* {box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;  }
+
+body{
+font-size:16px;
+font-family: 'Open Sans', sans-serif;
+font-weight:300;  /* also loaded 600 for bold*/
+}
+
+
+h1{
+color:red;
+}

@@ -1,0 +1,29 @@
+***** LINK TO THE ERIC MEYER RESET STYLE SHEET
+http://meyerweb.com/eric/tools/css/reset/
+
+***** LINK TO A STYLE SHEET
+<link href="stylesheets/reset.css" rel="stylesheet">
+
+***** MEDIA QUERY FOR THE TABLET STYLE SHEET
+@media only screen and (min-width: 641px) {
+} /*end of the media query*/
+
+***** META TAG FOR DO NOT LIE
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+***** SCRIPT TO HELP OLD IE UNDERSTAND HTML5 AND MEDIA QUERIES
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+
+
+
+
+
+/*-----Prevents iPhone from resizing in landscape mode -----*/
+html {-webkit-text-size-adjust: none; }
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;  }

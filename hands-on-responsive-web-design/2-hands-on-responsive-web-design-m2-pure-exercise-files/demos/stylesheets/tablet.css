@@ -1,0 +1,29 @@
+@media only screen and (min-width: 641px) {
+
+nav ul{
+	padding:0;
+	padding-left:2%;
+	border-left:soild 1px rgba(0,0,0,0.4);
+}
+
+nav ul li{
+	width:auto;
+	margin:0;
+}
+
+nav ul li a{
+	/*remove phone effects*/
+	margin:0;
+	background-color:transparent;
+	border-radius:0;
+	box-shadow:0;
+
+	/*add tablet effects*/
+	padding:1em 1.5em;
+	font-weight:300;
+	font-size:0.9em;
+	border-right:soild 1px rgba(0,0,0,0.4);
+}
+
+
+} /*end of the media query */

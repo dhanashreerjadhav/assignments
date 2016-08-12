@@ -1,0 +1,37 @@
+@media only screen and (min-width: 641px) {
+
+
+/*-----COLOR BAR -----*/
+	#colorbar {
+		height: 4px;
+	}
+	
+	
+/*----- SOCIAL -----*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----NAVIGATION -----*/	
+	nav ul li a br {display: none;}
+
+
+
+/*-----CONTENT -----*/
+
+
+
+
+
+} /*end of the media query */

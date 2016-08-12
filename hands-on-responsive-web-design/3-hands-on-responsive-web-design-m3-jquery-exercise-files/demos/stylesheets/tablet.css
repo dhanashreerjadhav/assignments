@@ -1,0 +1,39 @@
+@media only screen and (min-width: 641px) {
+#navWrapper{
+padding :0;}
+button#showPhoneNav{
+display:none;
+}
+nav ul{
+display:block!important;
+/* remove phone effects*/
+padding:0;
+margin:0 0 0 2%;
+border:none;
+border-radius:0;
+background-color:transparent;
+border-right:1px solid rgba(255,255,255,0.4);
+
+}
+nav ul li{
+float:left;
+}
+
+nav ul li a{
+border:none;
+padding:1em 1.5em;
+font-weight:300;
+font-size:.9em;
+border-right:1px solid rgba(255,255,255,0.4);
+}
+
+nav ul li.active a{
+color:#fff;
+background-color:orange;
+}
+/*---------- NAVIGATION -----------*/
+
+	
+
+
+} /*end of the media query */

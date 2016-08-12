@@ -1,0 +1,236 @@
+/*-----Prevents iPhone from resizing in landscape mode -----*/
+html {-webkit-text-size-adjust: none; }
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+/*-----BODY -----*/
+body {
+	background-color: #E6E1D8;
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:300;	/*also loaded 600 for bold*/
+	color: #494948;
+}
+
+/*-----COLOR BAR -----*/
+#colorbar {
+	position:absolute;
+	top: 0;
+	left: 0;
+	height: 44px;
+	width: 100%;
+	background-color: #e61b10;
+	}
+
+
+/*-----HEADER -----*/
+#headerWrapper {
+	background-color: #3B4044;
+}
+header {
+	padding: 1em 2% .5em 2%;
+}
+
+header h1 {
+	font-size: 2.1em;
+	color: #fff;
+}
+header h2 {
+	font-size: .9em;
+	font-weight: 300;
+	color: #ddd;
+	margin-top: .75em;
+}
+
+header a.tel {
+	position: absolute; 
+	top: .4em; 
+	right: 2%; 
+	z-index: 1000; /*makes sure it sits on top of everything else*/
+	font-size:1.4em;
+	font-weight: 600; 
+	color: #FFF!important;  /* necessary to override the default blue link color applied by phones */
+	text-decoration:none;
+	padding-left: 25px;
+	background-image:url(../images/icon_phone.png);
+	background-position:left 0;
+	background-repeat:no-repeat;
+}
+header a.tel:hover {
+		background-position:left -30px;
+}
+
+/*----- SOCIAL -----*/
+header .social {
+	margin: .75em 0;
+}	
+header .social li {
+	width: 25%;
+	float: left;
+	border: 1px solid rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.1);
+	text-align:center;
+	padding: .3em 0;
+}
+header .social li a {
+	color: #fff;
+	transition: color .5s;
+	font-size: 1.5em;	
+}
+header .social li a:hover {
+	color: #fff000;
+	
+}
+
+
+
+
+/*-----CONTENT -----*/
+
+#contentWrapper  {
+	background-color: #fff;
+}
+#contentWrapper .row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+#contentWrapper h1 {
+	color:#e22121;
+	font-size: 2em;
+	padding-top: 1em;
+	text-shadow: 1px 1px 2px #999;
+}
+#contentWrapper  h2 {
+	color:#3B4044;
+	font-size: 1.3em;
+	padding-top: .5em;
+	font-weight: 600;
+}
+
+
+#contentWrapper a.buy {
+	display: block;
+	width: 100%;
+	margin-bottom: .8em;
+	color: #FFF;
+	background-color: #e22121;
+	text-decoration: none;
+	text-align: center;
+	font-size: .75em;
+	padding: .5em 0;
+	border-radius: 14px 4px;
+	transition: background-color 0.9s ease;
+}
+#contentWrapper a.buy:hover {
+	background-color: #9800ff;
+}
+
+#contentWrapper p {
+	padding-top: .4em;
+	line-height: 140%;
+	
+	}
+#contentWrapper strong {font-weight: 600;}
+
+#contentWrapper hr {
+	height: 3px;
+	border: none;
+	background-color: #d6d6ce;
+	background: -moz-linear-gradient(left,  rgba(214,214,206,1) 0%, rgba(214,214,206,0) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(214,214,206,1)), color-stop(100%,rgba(214,214,206,0)));
+	background: -webkit-linear-gradient(left,  rgba(214,214,206,1) 0%,rgba(214,214,206,0) 100%);
+	background: -o-linear-gradient(left,  rgba(214,214,206,1) 0%,rgba(214,214,206,0) 100%);
+	background: -ms-linear-gradient(left,  rgba(214,214,206,1) 0%,rgba(214,214,206,0) 100%);
+	background: linear-gradient(to right,  rgba(214,214,206,1) 0%,rgba(214,214,206,0) 100%);
+}
+
+#contentWrapper ul.disc {
+	list-style-type:disc;
+	padding-top: 1em;	
+	padding-left: 2em;
+	color:#e22121;
+	line-height:120%;
+}
+#contentWrapper ul.disc li {
+	padding-bottom: .5em;
+}
+
+
+
+
+/*----- 12 COLUMN LAYOUT -----*/
+.column-3, .column-4, .column-6, .column-9, .column-12 {
+	width: 100%;
+	padding: .5em 2%;
+}
+
+
+/*----- PHOTOS -----*/
+figure.col4, figure.col6 {
+	width: 48%;
+	margin-left: 2%;
+	float: right;
+	border: 1px solid #999;
+}
+figure img {width: 100%;}
+figcaption {
+	text-align: center;
+	font-size: .8em;
+	padding: .3em 0;		
+}
+
+
+/*----- COLORS -----*/
+.color-1, .color-2, .color-3 {padding: 0 1em .5em 1em;	} 
+.color-1 {background-color:#f9f8c1;} /*yellow*/
+.color-2 {background-color:#ffc8c5;} /*red*/
+.color-3 {background-color:#ffddc1;} /*orange*/
+
+
+
+
+
+
+/*----- PHOTOS -----*/
+figure.column-3 {
+	width: 46%;
+	margin-left: 2%;
+	margin-top: .5em;
+	padding: .5em;
+	float: right;
+	background-color:#fff;
+	border: 1px solid #e22121;
+}
+figure.column-3 img {width: 100%;}
+
+figure figcaption {
+	text-align: center;
+	font-size: .8em;
+	padding-top: .15em;
+}
+
+
+
+
+
+/*----- FOOTER -----*/
+#footerWrapper {background-color: #979791;}
+footer {
+	clear: both;
+	font-size: .7em;
+	color: #fff;
+	text-align: center;
+	padding: .6em;
+}
+footer a {color: #fff;}
+
+
+/*----- OTHER -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

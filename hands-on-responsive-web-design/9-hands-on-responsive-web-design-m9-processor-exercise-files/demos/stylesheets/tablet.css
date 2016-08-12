@@ -1,0 +1,43 @@
+@media only screen and (min-width: 641px) {
+
+
+/*----- SOCIAL -----*/
+header .social {
+	position: absolute;
+	top: 46px;
+	right: 2%;	
+}	
+header .social li {
+	width: 44px;
+	float: left;
+	border: none;
+	background-color: transparent;
+	text-align:center;
+	padding: .3em 0;
+}
+
+
+/*----- 12 COLUMN LAYOUT -----*/
+	.column-3, .column-4, .column-6, .column-9, .column-12 {
+		float: left;
+	}
+	.column-3 {width: 25%;}
+	.column-4 {width: 33.3333%;}
+	.column-6 {width: 50%;}
+	.column-9 {width: 75%;}
+
+
+
+
+
+/*----- PHOTOS -----*/
+	figure.col4 {
+		width: 31.333%;
+		float: right;	
+	}
+
+
+
+
+
+} /*end of the media query */
