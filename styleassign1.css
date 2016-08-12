@@ -1,0 +1,93 @@
+header {
+	background-color: #000;
+	height: 40px;
+}
+
+nav {
+	padding-top: 8px;
+	padding-left:100px;
+	color: white;
+}
+
+.section-1 {
+	padding-top: 35px;
+	margin-top: 50px;
+	margin-left:100px;
+	height: 200px;
+	width: 800px;
+	border: 1px solid;
+	border-radius: 5px;
+	background-color: #E5E7E9;
+	border-style: inset;
+}
+
+.section-2 {
+	margin-top: 20px;
+	margin-left:100px;
+	height: 320px;
+	width: 800px;
+	border-radius: 5px;
+	border-top-style: ridge;
+}
+
+.articles {
+	float: left;
+	margin-right: 39px;
+	height: 240px;
+	width: 170px;
+	border: 1px solid;
+	border-style: inset;
+}
+
+.innersection-1 {
+	text-align :center;
+	height: 120px;
+	width: 158px;
+	background-color: #B2BABB; 
+	margin: 5px 5px 0px 5px; 
+	padding-top: 50px;
+}
+
+.innersection-2 {
+	margin-top :10px;
+	margin-left :10px;
+	text-align :center;
+	height: 100px;
+	width: 140px;
+	padding-top: 10px;
+	line-height: 70%;
+}
+
+.button-1{
+	float: left;
+	height: 30px;
+	width: 66px;
+	margin-left: 3px;
+	background-color :#5DADE2;
+}
+
+.button-2{
+	float: left;
+	height: 30px;
+	width: 66px;
+	margin-left: 3px;
+}
+.features {
+	margin-bottom: 8px;
+}
+
+.last-article {
+	float: left;
+	height: 240px;
+	width: 170px;
+	border: 1px solid;
+	border-style: inset;
+}
+
+.click {
+	margin-top: 15px;
+	height: 30px;
+	width: 70px;
+	border-radius: 5px;
+	background-color: #5DADE2;
+}
