@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <button id="square" name="square" onclick="callsquare()">SQUARE</button>
+        <button id="rectangle" name="rectangle" onclick="callrectangle()">RECTANGLE</button>
+        <button id="triangle" name="triangle" onclick="calltriangle()">TRIANGLE</button>
+        <div id="manyinputs"> 
+            <div id="inputs">
+                Enter co-ordinate x1:<input type="text" class="coordinate"/>&nbsp;&nbsp;
+                Enter co-ordinate y1:<input type="text" class="coordinate"/><br><br>
+                Enter co-ordinate x2:<input type="text" class="coordinate"/>&nbsp;&nbsp;
+                Enter co-ordinate y2:<input type="text" class="coordinate"/><br><br>
+                Enter co-ordinate x3:<input type="text" class="coordinate"/>&nbsp;&nbsp;
+                Enter co-ordinate y3:<input type="text" class="coordinate"/><br><br>
+            </div>
+            <div id="inputs1">
+                Enter co-ordinate x4:<input type="text" class="coordinate"/>&nbsp;&nbsp;
+                Enter co-ordinate y4:<input type="text" class="coordinate"/>
+            </div> 
+            <button id="submit1" type="submit" onclick="store()">SUBMIT</button>
+        </div>
+		<div id="display">
+            <p id="displayarea">Area is : </p>
+            <p id="displayperimeter">Perimeter is : </p>
+        </div>
+            
+        <script>
+            document.getElementById("manyinputs").style.visibility = "hidden";
+            document.getElementById("display").style.visibility = "hidden";
+            var pointssqu=[],edge=[],perimeter=0,shapetype,area=0;
+            function store()
+		    {
+               for(var i=0;i<8;i++)
+			   {
+                    pointssqu[i]=document.getElementsByClassName("coordinate")[i].value;
+               }
+			   edge[0]=Math.sqrt(Math.pow((pointssqu[2]-pointssqu[0]),2)+Math.pow((pointssqu[3]-pointssqu[1]),2));
+			   edge[1]=Math.sqrt(Math.pow((pointssqu[4]-pointssqu[2]),2)+Math.pow((pointssqu[5]-pointssqu[3]),2));
+			   edge[2]=Math.sqrt(Math.pow((pointssqu[6]-pointssqu[4]),2)+Math.pow((pointssqu[7]-pointssqu[5]),2));
+			   edge[3]=Math.sqrt(Math.pow((pointssqu[0]-pointssqu[6]),2)+Math.pow((pointssqu[1]-pointssqu[7]),2));
+               if(shapetype==="square")
+               {
+                   square.perimeter();
+                   square.area();
+                   document.getElementById("display").style.visibility = "visible";
+                   document.getElementById("displayarea").innerHTML+=area;
+                   document.getElementById("displayperimeter").innerHTML+=perimeter;
+               }
+               if(shapetype=="rectangle")
+               {
+                  rectangle.perimeter();
+                  rectangle.area();
+                  document.getElementById("display").style.visibility = "visible";
+                  document.getElementById("displayarea").innerHTML+=area;
+                  document.getElementById("displayperimeter").innerHTML+=perimeter;
+                }
+                if(shapetype=="triangle")
+                {
+                   triangle.perimeter();
+                   triangle.area();
+                   document.getElementById("display").style.visibility = "visible";
+                    
+                   document.getElementById("displayarea").innerHTML+=area;
+                   document.getElementById("displayperimeter").innerHTML+=perimeter;
+               }
+               
+           }
+            function callsquare(){
+                $(".coordinate").val("");
+                document.getElementById("manyinputs").style.visibility = "visible";
+                document.getElementById("inputs1").style.visibility = "visible";
+                shapetype=document.getElementById("square").name;
+            }
+            function callrectangle(){
+               $(".coordinate").val("");
+                document.getElementById("manyinputs").style.visibility = "visible";
+                document.getElementById("inputs1").style.visibility = "visible";
+                shapetype=document.getElementById("rectangle").name;
+            }
+            function calltriangle(){
+                $(".coordinate").val("");
+                document.getElementById("inputs1").style.visibility = "hidden";
+                document.getElementById("inputs").style.visibility = "visible";
+                 document.getElementById("submit1").style.visibility = "visible";
+                shapetype=document.getElementById("triangle").name;
+            }
+            
+            
+       function point(x,y)
+        {
+            this.x=x;
+            this.y=y;
+        }
+        function shape(edges,points){
+            this.edges=edges;
+            this.points=points;
+            this.area=function(){
+                if(this.edges==3){
+                    //alert("sdf");
+                    var p=perimeter/2;
+                    area=Math.sqrt(p*(p-edge[0])*(p-edge[1])*(p-edge[2]));
+                }
+                else{
+                    area=edge[0]*edge[1];
+                }
+            }
+            this.perimeter=function(){
+                for(var i=0;i<this.edges;i++){
+                    perimeter=perimeter+edge[i];
+                }
+            }
+        }
+        var triangle=new shape(3,pointssqu);
+        var square=new shape(4,pointssqu);
+        var rectangle=new shape(4,pointssqu);
+           /* triangle.area=function(){
+			var p=perimeter/2;
+            area=Math.sqrt(p*(p-edge[0])*(p-edge[1])*(p-edge[2]));
+        };
+           
+            
+        
+        square.area=function(){
+                area=edge[0]*edge[0];
+                console.log(area);
+            };
+            
+       
+            rectangle.area=function(){
+                area=edge[0]*edge[1];
+                console.log(area);
+            };*/
+            
+        </script>
+    </body>
+</html>
