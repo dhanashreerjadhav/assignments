@@ -1,26 +1,6 @@
-  function viewModel() {
-    
-    //AJAX call to get book list
-    $.ajax({
-        url: 'http://172.27.12.104:3000/book/list',          
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            self.bookdata(data);
-        }
-    });
-    
-    //AJAX call to get author list
-    $.ajax({
-        url: 'http://172.27.12.104:3000/author/list',       
-        dataType: 'json',
-        success: function (data) {
-            self.authordata(data);
-        }
-    });
+function viewModel() {
     
     var self=this;
-    
     self.isbn= ko.observable(" ");
     self.title= ko.observable(" ");
     self.author= ko.observable(" ");
@@ -45,8 +25,47 @@
     self.bookdata = ko.observableArray();
     self.authordata = ko.observableArray();
     
+    self.homepage=function(){
+        self.visibility1(true);
+        self.visibility2(false);
+        self.visibility3(false);
+        self.visibility4(false);
+        self.visibility5(false);
+        //AJAX call to get book list
+        $.ajax({
+            url: 'http://172.27.12.104:3000/book/list',          
+            dataType: 'json',
+            success: function (data) {
+                self.bookdata(data);
+            }
+        });
+
+        //AJAX call to get author list
+        $.ajax({
+            url: 'http://172.27.12.104:3000/author/list',       
+            dataType: 'json',
+            success: function (data) {
+                self.authordata(data);
+            }
+        });
+        self.isbn(" ");
+        self.title(" ");
+        self.author(" ");
+        self.price(" ");
+        self.availability([]);
+        self.booklocation();
+
+        self.empid(" ");
+        self.name(" ");
+        self.email(" ");
+        self.website(" ");
+        self.department(" ");
+        self.skills([]);
+        self.authorlocation();
+    }
+    
     //Function to add an author
-    self.addauthor=function(){                      
+    self.addauthor=function(){         
         $.ajax({
             url: 'http://172.27.12.104:3000/author/new',
             type: "post",
@@ -54,7 +73,8 @@
 				"empid": self.empid,   "name": self.name,   "email": self.email,   "website": self.website,   "department": self.department,   "skills": self.skills 
             },
             success: function(data){
-                location.reload();   
+                alert("Successfully added author !!!");
+                location.reload(); 
             },
         });
     }
@@ -80,7 +100,8 @@
 				        "empid": self.empid 
 				    } ,
                     success: function(data){
-                        location.reload();   
+                        alert("Successfully deleted author !!!");
+                        self.homepage();  
 				    },
             });
         } 
@@ -92,7 +113,8 @@
     //Function to display author info
     self.showprofile=function(author){      
         self.visibility1(false);
-        self.visibility3(true);
+        self.visibility5(true);
+        $("#saveauthor").hide();
         console.log(author.author);
         $.ajax({
             url: 'http://172.27.12.104:3000/author/byname',
@@ -112,14 +134,18 @@
     }
     
     //Function to edit author info
-    self.editauthordetails=function(){           
-        self.visibility3(false);
-        self.visibility5(true);
+    self.editauthordetails=function(){  
+        $("#saveauthor").show();
+        $("#deleteauthor").hide();
+        $("#inputname").prop('disabled',false);
+        $("#inputemail").prop('disabled',false);
+        $("#inputwebsite").prop('disabled',false);
+        $("#inputdepartment").prop('disabled',false);
     }
     
     //Function to save edited author details
     self.saveauthor=function(){                 
-        console.log(self.author());
+        console.log(self.website());
         $.ajax({
             url: 'http://172.27.12.104:3000/author/update',
             type: "put",
@@ -127,7 +153,8 @@
 				"empid": self.empid,   "name": self.name,   "email": self.email,   "website": self.website  , "department": self.department  , "skills": self.skills 
             } ,
             success: function(data){
-                location.reload();   
+                alert("Successfully saved author details !!!");
+                self.homepage();  
             },
         });
     }
@@ -138,11 +165,13 @@
         $.ajax({
             url: 'http://172.27.12.104:3000/book/new ',
             type: "post",
+            //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: {   
-				"isbn": self.isbn,   "title": self.title,   "author": self.author,   "price": self.price,   "availableOn": self.availability 
+				"isbn": self.isbn,   "title": self.title,   "author": self.author,   "price": self.price,   "availableOn": self.availability
             },
             success: function(data){
-                location.reload();   
+                alert("Successfully added book !!!");
+                location.reload();
             },
         });
     }
@@ -159,7 +188,8 @@
 				    "isbn": self.bookdata()[self.booklocation()].isbn 
 				} ,
                 success: function(data){
-                    location.reload();   
+                    alert("Successfully deleted book !!!");
+                    self.homepage(); 
                 },
             });
         } 
@@ -176,7 +206,7 @@
 	
     //Function to save edited book details
     self.savebook=function(){           
-        console.log(self.availability()+self.isbn()+self.title()+self.author()+self.price());
+        console.log(self.availability());
         $.ajax({
             url: 'http://172.27.12.104:3000/book/update',
             type: "put",
@@ -184,8 +214,8 @@
                 "isbn": self.isbn,   "title": self.title,   "author": self.author,   "price": self.price,   "availableOn": self.availability 
             },
             success: function(data){
-                console.log(data);
-                //location.reload();   
+                alert("Successfully saved book details !!!");
+                self.homepage();   
             },
         });
     }
@@ -198,33 +228,130 @@
         var context = ko.contextFor(event.target);
         self.booklocation(context.$index());
         console.log(self.booklocation());
-        self.isbn(book.isbn)
+        self.isbn(book.isbn);
         self.title(book.title);
         self.author(book.author);
         self.price(book.price);
         self.availability(book.availableOn);
     }
-               
+    
+    //AJAX call to get book list
+    $.ajax({
+        url: 'http://172.27.12.104:3000/book/list',          
+        dataType: 'json',
+        success: function (data) {
+            self.bookdata(data);
+        }
+    });
+    
+    
+    //AJAX call to get author list
+    $.ajax({
+        url: 'http://172.27.12.104:3000/author/list',       
+        dataType: 'json',
+        success: function (data) {
+            self.authordata(data);
+        }
+    });
 };
+
 ko.applyBindings(new viewModel());
 
+$('#newbook').formValidation({
+    framework: 'bootstrap',
+    excluded: ':disabled',
+    icon: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+        
+    fields: {
+        inputisbn: {
+            validators: {
+                notEmpty: {
+                    message: 'ISBN is required'
+                }
+            }
+        },
+        inputtitle: {
+            validators: {
+                notEmpty: {
+                    message: 'Title is required'
+                }
+            }
+        },
+        inputauthor: {
+            validators: {
+                notEmpty: {
+                    message: 'Author name is required'
+                }
+             }
+        },
+        inputprice: {
+            validators: {
+                notEmpty: {
+                    message: 'Book price is required'
+                }
+            }
+        },
+        inputavailability: {
+            validators: {
+                notEmpty: {
+                    message: 'Book availability is required'
+                }
+            }
+        }
+    }
+});
 
-$("#newbook").validate({
-                rules: {
-                    inputisbn: {
-                        required: true
-                    },
-                    inputtitle:{
-                        required: true,
-                    },
-                    inputauthor: {
-                        required: true
-                    },
-                    inputprice: {
-                        required: true,
-                    },
-                },
-                submitHandler: function(form) {
-                     form.submit();
-                 }
-      });
+$('#newauthor').formValidation({
+    framework: 'bootstrap',
+    excluded: ':disabled',
+    icon: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+        
+    fields: {
+        inputempid: {
+            validators: {
+                notEmpty: {
+                     message: 'Employee ID is required'
+                }
+            }
+        },
+        inputname: {
+            validators: {
+                notEmpty: {
+                    message: 'Author name is required'
+                }
+            }
+        },
+        inputemail: {
+            validators: {
+                notEmpty: {
+                    message: 'Author email is required'
+                }
+            }
+        },
+        inputskills: {
+            validators: {
+                notEmpty: {
+                    message: 'Author skills is required'
+                }
+            }
+        }
+    }
+});
+
+$('#myModal1').on('hidden.bs.modal', function () {
+    $('#newauthor').formValidation('resetForm', true);
+    location.reload();
+});
+                           
+$('#myModal').on('hidden.bs.modal', function () {
+    $('#newbook').formValidation('resetForm', true);
+    location.reload();
+});

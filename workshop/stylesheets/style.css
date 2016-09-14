@@ -6,11 +6,18 @@
 
 .header {
     margin-top: 10px;
-    background-color: deepskyblue;
+    background-color:darkgray;
 }
 
 .headings {
-    color:darkmagenta;
+    color:cadetblue;
     font-weight: bold;
-    text-align: left;
+}
+
+.home {
+    background-color:bisque;
+    
+}
+#homebutton {
+    margin-top: 15px;
 }

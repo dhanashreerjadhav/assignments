@@ -7,18 +7,27 @@
         <script src="http://knockoutjs.com/downloads/knockout-3.4.0.js"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+        <script src="http://formvalidation.io/vendor/formvalidation/js/formValidation.min.js"></script>
+        <script src="http://formvalidation.io/vendor/formvalidation/js/framework/bootstrap.min.js"></script>
+        
     </head>
     <body>
         <div class="container text-center header">
-            <h1>ONLINE LIBRARY SYSTEM</h1>
+            <div class="row">
+                <div class="col-md-2">
+                    <button id="homebutton" class="btn btn-info" data-bind="click:homepage"><b>Home</b></button>
+                </div>
+                <div class="col-md-10">
+                    <h1><b>ONLINE LIBRARY SYSTEM</b></h1>
+                </div>
+            </div>
         </div>
         <!--DIV TO DIPSLAY TABLE OF BOOK INFO-->
-        <div class="container" data-bind="visible:visibility1">
-            <button id="addbook" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Add New Book</button>
-            <button id="addauthor" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal1">Add New Author</button>
-            <table class="table table-hover table-bordered">
-                <thead class="thead-inverse">
+        <div class="container home" data-bind="visible:visibility1">
+            <button id="addbook" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><b>Add New Book</b></button>
+            <button id="addauthor" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal1"><b>Add New Author</b></button>
+            <table class="table table-hover table-bordered table-responsive">
+                <thead>
                     <th>ISBN</th>
                     <th>Title</th>
                     <th>Author</th>
@@ -34,9 +43,9 @@
         </div>
         
         <!--Div to display book information-->
-        <div id="bookpage" data-bind="visible:visibility2" class="container text-center">
+        <div id="bookpage" data-bind="visible:visibility2" class="container home">
             <h3 class="headings">BOOK INFORMATION </h3>
-            <form class="form-horizontal">
+            <form class="form-horizontal text-center">
                 <div class="form-group">
                     <label for="inputisbn" class="col-sm-2 control-label">ISBN</label>
                     <div class="col-sm-10">
@@ -67,15 +76,15 @@
                         <label class="form-control" id="inputavailability" placeholder="Availability" data-bind="text:availability"/>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" data-bind="click:editbookdetails">Edit</button>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" data-bind="click:deletebook">Delete</button>
+                <button type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click:editbookdetails">Edit</button>
+                <button type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click:deletebook">Delete</button>
             </form>
         </div>
         
         <!--Div to edit book information-->
-        <div id="editbookpage" data-bind="visible:visibility4" class="container text-center">
+        <div id="editbookpage" data-bind="visible:visibility4" class="container home">
             <h3 class="headings">EDIT BOOK INFORMATION </h3>
-            <form class="form-horizontal">
+            <form class="form-horizontal text-center">
                 <div class="form-group">
                     <label for="inputisbn" class="col-sm-2 control-label">ISBN</label>
                     <div class="col-sm-10">
@@ -112,64 +121,66 @@
                         <input type="checkbox" id="inlineCheckbox3" value="Snapdeal" data-bind="checked:availability">Snapdeal
                     </label>
                 </div>
-                <button type="submit" class="btn btn-default" data-dismiss="modal" data-bind="click:savebook">Save</button>
+                <button type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click:savebook">Save</button>
             </form>
         </div>
 		
         <!--Div to edit author information-->
-		<div id="editauthorpage" data-bind="visible:visibility5" class="container text-center">
+		<div id="editauthorpage" data-bind="visible:visibility5" class="container home">
             <h3 class="headings">EDIT AUTHOR INFORMATION</h3>
-            <form class="form-horizontal" data-toggle="validator" role="form">
+            <form class="form-horizontal text-center" data-toggle="validator" role="form">
                 <div class="form-group">
                     <label for="inputempid" class="col-sm-2 control-label">Emp ID</label>
                     <div class="col-sm-10">
-                        <input required="true" type="text" class="form-control" id="inputempid" placeholder="Employee ID" data-bind="value:empid" disabled>
+                        <input type="text" class="form-control" id="inputempid" placeholder="Employee ID" data-bind="value:empid" disabled/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputname" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                        <input required="true" type="text" class="form-control" id="inputname" placeholder="Name" data-bind="value:name" >
+                        <input type="text" class="form-control" id="inputname" placeholder="Name" data-bind="value:name" disabled/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputemail" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input  type="text" class="form-control" id="inputemail" placeholder="Email" data-bind="value:email" required>
+                        <input  type="text" class="form-control" id="inputemail" placeholder="Email" data-bind="value:email" disabled/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputwebsite" class="col-sm-2 control-label">Website</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputwebsite" placeholder="Website" data-bind="value:website" value=" ">
+                        <input type="text" class="form-control" id="inputwebsite" placeholder="Website" data-bind="value:website" value=" " disabled/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputdepartment" class="col-sm-2 control-label">Department</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" value="Engineering" id="inputdepartment" placeholder="Department" data-bind="value:department">
+                        <input type="text" class="form-control" value="Engineering" id="inputdepartment" placeholder="Department" data-bind="value:department" disabled/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputskills" class="col-sm-2 control-label">Skills</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox1" value="HTML" data-bind="checked:skills">HTML
+                        <input type="checkbox" id="inlineCheckbox1" value="HTML" data-bind="checked:skills" disabled>HTML
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox2" value="CSS" data-bind="checked:skills">CSS
+                        <input type="checkbox" id="inlineCheckbox2" value="CSS" data-bind="checked:skills" disabled>CSS
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox3" value="Javascript" data-bind="checked:skills">Javascript
+                        <input type="checkbox" id="inlineCheckbox3" value="Javascript" data-bind="checked:skills" disabled>Javascript
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" data-bind="click : saveauthor">SAVE</button>
+                <button type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click : editauthordetails">EDIT</button>
+                <button id="deleteauthor" type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click : deleteauthor">DELETE</button>
+                <button id="saveauthor" type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click : saveauthor">SAVE</button>
             </form>
         </div>
         
-        <!--Div to display author information-->
-        <div id="profilepage" data-bind="visible:visibility3" class="container text-center">
+        <!--Div to display author information
+        <div id="profilepage" data-bind="visible:visibility3" class="container home">
             <h3 class="headings">AUTHOR INFORMATION </h3>
-            <form class="form-horizontal" data-toggle="validator" role="form">
+            <form class="form-horizontal text-center" data-toggle="validator" role="form">
                 <div class="form-group">
                     <label for="inputempid" class="col-sm-2 control-label">Emp ID</label>
                     <div class="col-sm-10">
@@ -206,10 +217,10 @@
                         <label class="form-control" id="inputskills" placeholder="Skills" data-bind="text:skills"/>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" data-bind="click : editauthordetails">EDIT</button>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" data-bind="click : deleteauthor">DELETE</button>
+                <button type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click : editauthordetails">EDIT</button>
+                <button type="submit" class="btn btn-info" data-dismiss="modal" data-bind="click : deleteauthor">DELETE</button>
             </form>
-        </div>
+        </div>-->
         
         <!--Modal for new book-->
         <div id="myModal" class="modal fade" role="dialog">
@@ -219,55 +230,57 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Add New Book</h4>
                     </div>
-                    <form id="newbook" class="form-horizontal">
+                    <form id="newbook" class="form-horizontal" data-toggle="validator" role="form" data-bind="submit:addbook">
                     <div class="modal-body">
                             <div class="form-group">
                                 <label for="inputisbn" class="col-sm-2 control-label">ISBN</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputisbn" placeholder="ISBN" data-bind="value:isbn" required/>
+                                    <input type="text" class="form-control" name="inputisbn" data-bind="value:isbn"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputtitle" class="col-sm-2 control-label">Title</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputtitle" placeholder="Title" data-bind="value:title" required/>
+                                  <input type="text" class="form-control" name="inputtitle" data-bind="value:title"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputauthor" class="col-sm-2 control-label">Author</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputauthor" placeholder="Author" data-bind="value:author" required/>
+                                  <input type="text" class="form-control" name="inputauthor" data-bind="value:author"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputprice" class="col-sm-2 control-label">Price</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputprice" placeholder="Price" data-bind="value:price" required/>
+                                  <input type="number" class="form-control" name="inputprice" data-bind="value:price"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputavailability" class="col-sm-2 control-label">Availability</label>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox1" value="Amazon" data-bind="checked:availability">Amazon
+                                  <input name="inputavailability" type="checkbox" id="inlineCheckbox1" value="Amazon" data-bind="checked:availability">Amazon
                                 </label>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox2" value="Flipkart" data-bind="checked:availability">Flipkart
+                                  <input name="inputavailability" type="checkbox" id="inlineCheckbox2" value="Flipkart" data-bind="checked:availability">Flipkart
                                 </label>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox3" value="Snapdeal" data-bind="checked:availability">Snapdeal
+                                  <input name="inputavailability" type="checkbox" id="inlineCheckbox3" value="Snapdeal" data-bind="checked:availability">Snapdeal
                                 </label>
                             </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-info" data-bind="enable:isbn()!='' && title()!='' && author()!='' && price()!='' && availability()!='',click : addbook">Submit</button>
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            </div>
                     </div>
-                    <div class="modal-footer">
-                        <input type="submit" data-dismiss="modal" data-bind="click:addbook"/>
-                    </div>
+                    
                     </form>
                 </div>
             </div>
         </div>
         
         <!--Modal for new author-->
-        <div id="myModal1" class="modal fade" role="dialog">
+       <div id="myModal1" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -275,53 +288,54 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Add New Author</h4>
                     </div>
-                    <form class="form-horizontal" data-toggle="validator" role="form">
+                    <form id="newauthor" class="form-horizontal" data-toggle="validator" role="form" method="post">
                     <div class="modal-body">
                             <div class="form-group">
                                 <label for="inputempid" class="col-sm-2 control-label">Emp ID</label>
                                 <div class="col-sm-10">
-                                    <input required="true" type="text" class="form-control" id="inputempid" placeholder="Employee ID" data-bind="value:empid" >
+                                    <input type="number" class="form-control" name="inputempid" data-bind="value:empid" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputname" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                  <input required="true" type="text" class="form-control" id="inputname" placeholder="Name" data-bind="value:name" >
+                                  <input type="text" class="form-control" name="inputname" data-bind="value:name" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputemail" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                  <input  type="text" class="form-control" id="inputemail" placeholder="Email" data-bind="value:email" required>
+                                  <input  type="email" class="form-control" name="inputemail" data-bind="value:email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputwebsite" class="col-sm-2 control-label">Website</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputwebsite" placeholder="Website" data-bind="value:website" value=" ">
+                                  <input type="url" class="form-control" name="inputwebsite" data-bind="value:website" value=" ">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputdepartment" class="col-sm-2 control-label">Department</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" value="Engineering" id="inputdepartment" placeholder="Department" data-bind="value:department">
+                                  <input type="text" class="form-control" value="Engineering" id="inputdepartment" data-bind="value:department">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputskills" class="col-sm-2 control-label">Skills</label>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox1" value="HTML" data-bind="checked:skills">HTML
+                                  <input type="checkbox" name="inputskills" value="HTML" data-bind="checked:skills">HTML
                                 </label>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox2" value="CSS" data-bind="checked:skills">CSS
+                                  <input type="checkbox" name="inputskills" value="CSS" data-bind="checked:skills">CSS
                                 </label>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox3" value="Javascript" data-bind="checked:skills">Javascript
+                                  <input type="checkbox" name="inputskills" value="Javascript" data-bind="checked:skills">Javascript
                                 </label>
                             </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" data-dismiss="modal" data-bind="click : addauthor"/>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-info" data-bind="enable:empid()!='' && name()!='' && email()!='' && skills()!='',click : addauthor">Submit</button>
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            </div>
                     </div>
                     </form>
                 </div>

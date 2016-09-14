@@ -1,56 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://knockoutjs.com/downloads/knockout-3.4.0.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>-->
+        <script src="http://formvalidation.io/vendor/formvalidation/js/formValidation.min.js"></script>
+<script src="http://formvalidation.io/vendor/formvalidation/js/framework/bootstrap.min.js"></script>
+        
+    </head>
+    <body>
 
-<div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Add New Book</h4>
+<p class="text-center">
+    <button class="btn btn-default" data-toggle="modal" data-target="#loginModal">Login</button>
+</p>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title">Login</h5>
+            </div>
+
+            <div class="modal-body">
+                <!-- The form is placed inside the body of modal -->
+                <form id="loginForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Username</label>
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control" name="username" />
+                        </div>
                     </div>
-                    <form id="newbook" class="form-horizontal">
-                    <div class="modal-body">
-                            <div class="form-group">
-                                <label for="inputisbn" class="col-sm-2 control-label">ISBN</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputisbn" placeholder="ISBN" data-bind="value:isbn" required/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputtitle" class="col-sm-2 control-label">Title</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputtitle" placeholder="Title" data-bind="value:title" required/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputauthor" class="col-sm-2 control-label">Author</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputauthor" placeholder="Author" data-bind="value:author" required/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputprice" class="col-sm-2 control-label">Price</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputprice" placeholder="Price" data-bind="value:price" required/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputavailability" class="col-sm-2 control-label">Availability</label>
-                                <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox1" value="Amazon" data-bind="checked:availability">Amazon
-                                </label>
-                                <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox2" value="Flipkart" data-bind="checked:availability">Flipkart
-                                </label>
-                                <label class="checkbox-inline">
-                                  <input type="checkbox" id="inlineCheckbox3" value="Snapdeal" data-bind="checked:availability">Snapdeal
-                                </label>
-                            </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Password</label>
+                        <div class="col-xs-5">
+                            <input type="password" class="form-control" name="password" />
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <input type="submit" data-dismiss="modal" data-bind="click:addbook"/>
+
+                    <div class="form-group">
+                        <div class="col-xs-5 col-xs-offset-3">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
                     </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    
-        
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#loginForm').formValidation({
+        framework: 'bootstrap',
+        excluded: ':disabled',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required'
+                    }
+                }
+            }
+        }
+    });
+});
+    $('#loginModal').on('hidden.bs.modal', function() {
+    $('#loginForm').formValidation('resetForm', true);
+});
+</script>
+    </body>
+</html>
