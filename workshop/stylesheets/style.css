@@ -6,7 +6,7 @@
 
 .header {
     margin-top: 10px;
-    background-color:darkgray;
+    background-color:darkcyan;
 }
 
 .headings {
@@ -15,9 +15,18 @@
 }
 
 .home {
-    background-color:bisque;
-    
+    background-color:azure;
 }
+
 #homebutton {
     margin-top: 15px;
+}
+
+.buttons {
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.alignment {
+    margin-left: 130px;
 }

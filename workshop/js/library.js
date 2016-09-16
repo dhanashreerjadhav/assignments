@@ -69,20 +69,23 @@ function viewModel() {
         $.ajax({
             url: 'http://172.27.12.104:3000/author/new',
             type: "post",
-            data: {   
+            contentType:'application/json',
+            data: ko.toJSON({
 				"empid": self.empid,   "name": self.name,   "email": self.email,   "website": self.website,   "department": self.department,   "skills": self.skills 
-            },
+            }),
             success: function(data){
-                alert("Successfully added author !!!");
+                $.notify("Successfully added author !!!",{delay:2000});
                 location.reload(); 
+                //self.homepage();
             },
         });
     }
     
     //Function to delete an author
     self.deleteauthor=function(author){                
-        var r = confirm("Are you sure you want to delete record?");
-        if (r == true) {
+        //var r = confirm("Are you sure you want to delete record?");
+        bootbox.confirm("Are you sure?", function(result) {
+            if (result == true) {
             $.ajax({
 				url: 'http://172.27.12.104:3000/author/byname',
 				type: "post",
@@ -100,7 +103,7 @@ function viewModel() {
 				        "empid": self.empid 
 				    } ,
                     success: function(data){
-                        alert("Successfully deleted author !!!");
+                        $.notify("Successfully deleted author !!!",{delay:2000});
                         self.homepage();  
 				    },
             });
@@ -108,13 +111,31 @@ function viewModel() {
         else {
                 return;
         }
+        }); 
     }
     
     //Function to display author info
     self.showprofile=function(author){      
         self.visibility1(false);
         self.visibility5(true);
+        console.log()
+        $("#editauthor").show();
+        $("#deleteauthor").show();
         $("#saveauthor").hide();
+        $("#inputempid").hide();
+        $("#inputname").hide();
+        $("#inputemail").hide();
+        $("#inputwebsite").hide();
+        $("#inputdepartment").hide();
+        $("#skillsCheckbox1").hide();
+        $("#skillsCheckbox2").hide();
+        $("#skillsCheckbox3").hide();
+        $("#labelempid").show();
+        $("#labelname").show();
+        $("#labelemail").show();
+        $("#labelwebsite").show();
+        $("#labeldepartment").show();
+        $("#labelskills").show();
         console.log(author.author);
         $.ajax({
             url: 'http://172.27.12.104:3000/author/byname',
@@ -137,10 +158,21 @@ function viewModel() {
     self.editauthordetails=function(){  
         $("#saveauthor").show();
         $("#deleteauthor").hide();
-        $("#inputname").prop('disabled',false);
-        $("#inputemail").prop('disabled',false);
-        $("#inputwebsite").prop('disabled',false);
-        $("#inputdepartment").prop('disabled',false);
+        $("#editauthor").hide();
+        $("#inputempid").show();
+        $("#inputname").show();
+        $("#inputemail").show();
+        $("#inputwebsite").show();
+        $("#inputdepartment").show();
+        $("#skillsCheckbox1").show();
+        $("#skillsCheckbox2").show();
+        $("#skillsCheckbox3").show();
+        $("#labelempid").hide();
+        $("#labelname").hide();
+        $("#labelemail").hide();
+        $("#labelwebsite").hide();
+        $("#labeldepartment").hide();
+        $("#labelskills").hide();
     }
     
     //Function to save edited author details
@@ -149,11 +181,12 @@ function viewModel() {
         $.ajax({
             url: 'http://172.27.12.104:3000/author/update',
             type: "put",
-            data: {   
+            contentType:'application/json',
+            data: ko.toJSON({   
 				"empid": self.empid,   "name": self.name,   "email": self.email,   "website": self.website  , "department": self.department  , "skills": self.skills 
-            } ,
+            }) ,
             success: function(data){
-                alert("Successfully saved author details !!!");
+                $.notify("Successfully saved author details !!!",{delay:2000});
                 self.homepage();  
             },
         });
@@ -165,12 +198,14 @@ function viewModel() {
         $.ajax({
             url: 'http://172.27.12.104:3000/book/new ',
             type: "post",
-            //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data: {   
+            contentType:'application/json',
+            data: ko.toJSON({   
 				"isbn": self.isbn,   "title": self.title,   "author": self.author,   "price": self.price,   "availableOn": self.availability
-            },
+            }),
             success: function(data){
-                alert("Successfully added book !!!");
+                $.notify("Successfully added book !!!",{delay:2000});
+                //$("#myModal").hide();
+                //self.homepage();
                 location.reload();
             },
         });
@@ -179,8 +214,9 @@ function viewModel() {
     //Function to delete book
     self.deletebook=function(){            
         console.log(self.bookdata()[self.booklocation()].isbn);
-        var r = confirm("Are you sure you want to delete record?");
-        if (r == true) {
+        //var r = confirm("Are you sure you want to delete record?");
+        bootbox.confirm("Are you sure?", function(result) {
+            if (result == true) {
             $.ajax({
                 url: 'http://172.27.12.104:3000/book/remove',
                 type: 'DELETE',
@@ -188,7 +224,7 @@ function viewModel() {
 				    "isbn": self.bookdata()[self.booklocation()].isbn 
 				} ,
                 success: function(data){
-                    alert("Successfully deleted book !!!");
+                    $.notify("Successfully deleted book !!!",{delay:2000});
                     self.homepage(); 
                 },
             });
@@ -196,12 +232,27 @@ function viewModel() {
         else {
             return;
         }
+        }); 
     }
     
     //Function to edit book info
-    self.editbookdetails=function(){    
-        self.visibility2(false);
-        self.visibility4(true);
+    self.editbookdetails=function(){  
+        $("#savebook").show();
+        $("#deletebook").hide();
+        $("#editbook").hide();
+        $("#inputisbn").show();
+        $("#inputtitle").show();
+        $("#inputauthor").show();
+        $("#inputprice").show();
+        $("#inputavailability").show();
+        $("#availabilityCheckbox1").show();
+        $("#availabilityCheckbox2").show();
+        $("#availabilityCheckbox3").show();
+        $("#labelisbn").hide();
+        $("#labeltitle").hide();
+        $("#labelauthor").hide();
+        $("#labelprice").hide();
+        $("#labelavailability").hide();
     }
 	
     //Function to save edited book details
@@ -210,11 +261,12 @@ function viewModel() {
         $.ajax({
             url: 'http://172.27.12.104:3000/book/update',
             type: "put",
-            data: {   
+            contentType:'application/json',
+            data: ko.toJSON({   
                 "isbn": self.isbn,   "title": self.title,   "author": self.author,   "price": self.price,   "availableOn": self.availability 
-            },
+            }),
             success: function(data){
-                alert("Successfully saved book details !!!");
+                $.notify("Successfully saved book details !!!",{delay:2000});
                 self.homepage();   
             },
         });
@@ -223,7 +275,23 @@ function viewModel() {
     //Function to display book info
     self.bookinfo=function(book){     
         self.visibility1(false);
-        self.visibility2(true);
+        self.visibility4(true);
+        $("#savebook").hide();
+        $("#editbook").show();
+        $("#deletebook").show();
+        $("#inputisbn").hide();
+        $("#inputtitle").hide();
+        $("#inputauthor").hide();
+        $("#inputprice").hide();
+        $("#inputavailability").hide();
+        $("#availabilityCheckbox1").hide();
+        $("#availabilityCheckbox2").hide();
+        $("#availabilityCheckbox3").hide();
+        $("#labelisbn").show();
+        $("#labeltitle").show();
+        $("#labelauthor").show();
+        $("#labelprice").show();
+        $("#labelavailability").show();
         console.log(book);
         var context = ko.contextFor(event.target);
         self.booklocation(context.$index());
