@@ -1,5 +1,4 @@
 function viewModel() {
-    
     var self=this;
     self.isbn= ko.observable(" ");
     self.title= ko.observable(" ");
@@ -16,19 +15,22 @@ function viewModel() {
     self.skills = ko.observableArray();
     self.authorlocation = ko.observable();
     
-    self.visibility1 = ko.observable(true);
+    self.visibility1 = ko.observable(false);
     self.visibility2 = ko.observable(false);
     self.visibility3 = ko.observable(false);
     self.visibility4 = ko.observable(false);
     self.visibility5 = ko.observable(false);
+    self.visibility6 = ko.observable(true);
+    self.visibility7 = ko.observable(true);
     
     self.bookdata = ko.observableArray();
     self.authordata = ko.observableArray();
     
-    self.homepage=function(){
+    self.getlist=function(){
+        $('#editauthorform').bootstrapValidator("resetForm",true); 
         self.visibility1(true);
-        self.visibility2(false);
-        self.visibility3(false);
+        self.visibility7(false);
+        self.visibility6(false);
         self.visibility4(false);
         self.visibility5(false);
         //AJAX call to get book list
@@ -64,6 +66,14 @@ function viewModel() {
         self.authorlocation();
     }
     
+    self.homepage=function(){
+        self.visibility6(true);
+        self.visibility7(true);
+        self.visibility1(false);
+        self.visibility4(false);
+        self.visibility5(false);
+    }
+    
     //Function to add an author
     self.addauthor=function(){         
         $.ajax({
@@ -74,17 +84,18 @@ function viewModel() {
 				"empid": self.empid,   "name": self.name,   "email": self.email,   "website": self.website,   "department": self.department,   "skills": self.skills 
             }),
             success: function(data){
+                $(function () {
+                    $('#myModal1').modal('toggle');
+                });
+                self.getlist();
                 $.notify("Successfully added author !!!",{delay:2000});
-                location.reload(); 
-                //self.homepage();
             },
         });
     }
     
     //Function to delete an author
     self.deleteauthor=function(author){                
-        //var r = confirm("Are you sure you want to delete record?");
-        bootbox.confirm("Are you sure?", function(result) {
+        bootbox.confirm("Are you sure you want to delete the author?", function(result) {
             if (result == true) {
             $.ajax({
 				url: 'http://172.27.12.104:3000/author/byname',
@@ -104,7 +115,7 @@ function viewModel() {
 				    } ,
                     success: function(data){
                         $.notify("Successfully deleted author !!!",{delay:2000});
-                        self.homepage();  
+                        self.getlist();  
 				    },
             });
         } 
@@ -118,7 +129,9 @@ function viewModel() {
     self.showprofile=function(author){      
         self.visibility1(false);
         self.visibility5(true);
-        console.log()
+        self.visibility6(true);
+        self.visibility4(false);
+        self.visibility7(false);
         $("#editauthor").show();
         $("#deleteauthor").show();
         $("#saveauthor").hide();
@@ -136,7 +149,6 @@ function viewModel() {
         $("#labelwebsite").show();
         $("#labeldepartment").show();
         $("#labelskills").show();
-        console.log(author.author);
         $.ajax({
             url: 'http://172.27.12.104:3000/author/byname',
             type: "post",
@@ -156,6 +168,11 @@ function viewModel() {
     
     //Function to edit author info
     self.editauthordetails=function(){  
+        self.visibility1(false);
+        self.visibility5(true);
+        self.visibility6(true);
+        self.visibility4(false);
+        self.visibility7(false);
         $("#saveauthor").show();
         $("#deleteauthor").hide();
         $("#editauthor").hide();
@@ -177,7 +194,6 @@ function viewModel() {
     
     //Function to save edited author details
     self.saveauthor=function(){                 
-        console.log(self.website());
         $.ajax({
             url: 'http://172.27.12.104:3000/author/update',
             type: "put",
@@ -187,14 +203,13 @@ function viewModel() {
             }) ,
             success: function(data){
                 $.notify("Successfully saved author details !!!",{delay:2000});
-                self.homepage();  
+                self.getlist();  
             },
         });
     }
 	
     //Function to add a book
     self.addbook=function(){                    
-        console.log(self.availability());
         $.ajax({
             url: 'http://172.27.12.104:3000/book/new ',
             type: "post",
@@ -203,19 +218,18 @@ function viewModel() {
 				"isbn": self.isbn,   "title": self.title,   "author": self.author,   "price": self.price,   "availableOn": self.availability
             }),
             success: function(data){
+                $(function () {
+                    $('#myModal').modal('toggle');
+                });
+                self.getlist();
                 $.notify("Successfully added book !!!",{delay:2000});
-                //$("#myModal").hide();
-                //self.homepage();
-                location.reload();
             },
         });
     }
     
     //Function to delete book
     self.deletebook=function(){            
-        console.log(self.bookdata()[self.booklocation()].isbn);
-        //var r = confirm("Are you sure you want to delete record?");
-        bootbox.confirm("Are you sure?", function(result) {
+        bootbox.confirm("Are you sure you want to delete the book?", function(result) {
             if (result == true) {
             $.ajax({
                 url: 'http://172.27.12.104:3000/book/remove',
@@ -225,7 +239,7 @@ function viewModel() {
 				} ,
                 success: function(data){
                     $.notify("Successfully deleted book !!!",{delay:2000});
-                    self.homepage(); 
+                    self.getlist(); 
                 },
             });
         } 
@@ -236,7 +250,12 @@ function viewModel() {
     }
     
     //Function to edit book info
-    self.editbookdetails=function(){  
+    self.editbookdetails=function(){
+        self.visibility1(false);
+        self.visibility5(false);
+        self.visibility6(true);
+        self.visibility4(true);
+        self.visibility7(false);
         $("#savebook").show();
         $("#deletebook").hide();
         $("#editbook").hide();
@@ -257,7 +276,6 @@ function viewModel() {
 	
     //Function to save edited book details
     self.savebook=function(){           
-        console.log(self.availability());
         $.ajax({
             url: 'http://172.27.12.104:3000/book/update',
             type: "put",
@@ -267,15 +285,18 @@ function viewModel() {
             }),
             success: function(data){
                 $.notify("Successfully saved book details !!!",{delay:2000});
-                self.homepage();   
+                self.getlist();   
             },
         });
     }
     
     //Function to display book info
-    self.bookinfo=function(book){     
+    self.bookinfo=function(book){  
         self.visibility1(false);
+        self.visibility5(false);
         self.visibility4(true);
+        self.visibility6(true);
+        self.visibility7(false);
         $("#savebook").hide();
         $("#editbook").show();
         $("#deletebook").show();
@@ -292,39 +313,18 @@ function viewModel() {
         $("#labelauthor").show();
         $("#labelprice").show();
         $("#labelavailability").show();
-        console.log(book);
         var context = ko.contextFor(event.target);
         self.booklocation(context.$index());
-        console.log(self.booklocation());
         self.isbn(book.isbn);
         self.title(book.title);
         self.author(book.author);
         self.price(book.price);
         self.availability(book.availableOn);
     }
-    
-    //AJAX call to get book list
-    $.ajax({
-        url: 'http://172.27.12.104:3000/book/list',          
-        dataType: 'json',
-        success: function (data) {
-            self.bookdata(data);
-        }
-    });
-    
-    
-    //AJAX call to get author list
-    $.ajax({
-        url: 'http://172.27.12.104:3000/author/list',       
-        dataType: 'json',
-        success: function (data) {
-            self.authordata(data);
-        }
-    });
 };
-
 ko.applyBindings(new viewModel());
 
+//FORM VALIDATIONS 
 $('#newbook').formValidation({
     framework: 'bootstrap',
     excluded: ':disabled',
@@ -416,10 +416,35 @@ $('#newauthor').formValidation({
 
 $('#myModal1').on('hidden.bs.modal', function () {
     $('#newauthor').formValidation('resetForm', true);
-    location.reload();
+});
+
+$('#myModal1').on('shown.bs.modal', function() {
+     $("#submitauthor").prop('disabled',true);
 });
                            
 $('#myModal').on('hidden.bs.modal', function () {
     $('#newbook').formValidation('resetForm', true);
-    location.reload();
+});
+
+$('#myModal').on('shown.bs.modal', function() {
+     $("#submitbook").prop('disabled',true);
+});
+
+$('#editauthorform').formValidation({
+    framework: 'bootstrap',
+    excluded: ':disabled',
+    icon: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+        email: {
+            validators: {
+                emailAddress: {
+                    message: 'The value is not a valid email address'
+                },
+            }
+        }
+    }
 });

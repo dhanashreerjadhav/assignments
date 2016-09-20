@@ -6,7 +6,13 @@
 
 .header {
     margin-top: 10px;
-    background-color:darkcyan;
+    background-image: url("../images/images_1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textheader{
+    color:white;
 }
 
 .headings {
@@ -16,6 +22,7 @@
 
 .home {
     background-color:azure;
+    margin-top: 20px;
 }
 
 #homebutton {
@@ -29,4 +36,18 @@
 
 .alignment {
     margin-left: 130px;
+}
+
+.getlist>button,img {
+    margin : 30px auto 0 auto;
+    display:block;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+
+.carouselcontainer {
+    margin-top: 50px;
 }

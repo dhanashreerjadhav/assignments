@@ -18,11 +18,49 @@
                 <div class="col-md-2">
                     <button id="homebutton" class="btn btn-info" data-bind="click:homepage"><b>Home</b></button>
                 </div>
-                <div class="col-md-10">
-                    <h1><b>ONLINE LIBRARY SYSTEM</b></h1>
+                <div class="col-md-10 textheader">
+                    <h1><b>DIGITAL LIBRARY</b></h1>
                 </div>
             </div>
         </div>
+        
+        <div class="container carouselcontainer" data-bind="visible:visibility7">
+              <br>
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="images/corporate.jpg" alt="Chania" width="460" height="345">
+                  </div>
+
+                  <div class="item">
+                    <img src="images/Whyreadbanner1.jpg" alt="Chania" width="460" height="345">
+                  </div>
+
+                  <div class="item">
+                    <img src="images/Whyreadbanner2.jpg" alt="Flower" width="460" height="345">
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        </div>
+    
         <!--DIV TO DIPSLAY TABLE OF BOOK INFO-->
         <div class="container home" data-bind="visible:visibility1">
             <button id="addbook" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><b>Add New Book</b></button>
@@ -46,37 +84,37 @@
         <!--Div to edit book information-->
         <div id="editbookpage" data-bind="visible:visibility4" class="container home">
             <h3 class="headings">EDIT BOOK INFORMATION </h3>
-            <form class="form-horizontal text-center">
+            <form class="form-horizontal">
                 <div class="form-group">
-                    <label for="inputisbn" class="col-sm-2 control-label">ISBN</label>
+                    <label for="inputisbn" class="col-sm-2 control-label">ISBN : </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputisbn" data-bind="value:isbn" disabled/>
-                        <label id="labelisbn" data-bind="text:isbn"/>
+                        <label class="control-label" id="labelisbn" data-bind="text:isbn"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputtitle" class="col-sm-2 control-label">Title</label>
+                    <label for="inputtitle" class="col-sm-2 control-label">Title : </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputtitle" data-bind="value:title"/>
-                        <label id="labeltitle" data-bind="text:title"/>
+                        <label class="control-label" id="labeltitle" data-bind="text:title"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputauthor" class="col-sm-2 control-label">Author</label>
+                    <label for="inputauthor" class="col-sm-2 control-label">Author : </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputauthor" data-bind="value:author"/>
-                        <label id="labelauthor" data-bind="text:author"/>
+                        <label class="control-label" id="labelauthor" data-bind="text:author"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputprice" class="col-sm-2 control-label">Price</label>
+                    <label for="inputprice" class="col-sm-2 control-label">Price : </label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" id="inputprice" data-bind="value:price"/>
-                        <label id="labelprice" data-bind="text:price"/>
+                        <label class="control-label" id="labelprice" data-bind="text:price"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputavailability" class="col-sm-2 control-label">Availability</label>
+                    <label for="inputavailability" class="col-sm-2 control-label">Availability : </label>
                     <label class="checkbox-inline" id="availabilityCheckbox1">
                         <input type="checkbox" value="Amazon" data-bind="checked:availability"/>Amazon
                     </label>
@@ -86,55 +124,57 @@
                     <label class="checkbox-inline" id="availabilityCheckbox3">
                         <input type="checkbox" value="Snapdeal" data-bind="checked:availability" />Snapdeal
                     </label>
-                    <label id="labelavailability" data-bind="text:availability"/>
+                    <label class="control-label" id="labelavailability" data-bind="text:availability"/>
                 </div>
-                <button id="editbook" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click:editbookdetails">EDIT</button>
-                <button id="deletebook" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : deletebook">DELETE</button>
-                <button id="savebook" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : savebook">SAVE</button>
+                <div class="container text-center">
+                    <button id="editbook" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click:editbookdetails"><b>EDIT</b></button>
+                    <button id="deletebook" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : deletebook"><b>DELETE</b></button>
+                    <button id="savebook" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : savebook"><b>SAVE</b></button>
+                </div>
             </form>
         </div>
 		
         <!--Div to edit author information-->
 		<div id="editauthorpage" data-bind="visible:visibility5" class="container home">
             <h3 class="headings">EDIT AUTHOR INFORMATION</h3>
-            <form class="form-horizontal text-center" data-toggle="validator" role="form">
+            <form id="editauthorform" class="form-horizontal" role="form" data-fv-framework="bootstrap" data-fv-icon-valid="glyphicon glyphicon-ok" data-fv-icon-invalid="glyphicon glyphicon-remove" data-fv-icon-validating="glyphicon glyphicon-refresh">
                 <div class="form-group">
-                    <label for="inputempid" class="col-sm-2 control-label">Emp ID</label>
+                    <label for="inputempid" class="col-sm-2 control-label">Emp ID : </label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" id="inputempid" data-bind="value:empid" disabled/>
-                        <label id="labelempid" data-bind="text:empid" />
+                        <label class="control-label" id="labelempid" data-bind="text:empid" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputname" class="col-sm-2 control-label">Name</label>
+                    <label for="inputname" class="col-sm-2 control-label">Name : </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputname" data-bind="value:name"/>
-                        <label id="labelname" data-bind="text:name" />
+                        <label class="control-label" id="labelname" data-bind="text:name" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputemail" class="col-sm-2 control-label">Email</label>
+                    <label for="inputemail" class="col-sm-2 control-label">Email : </label>
                     <div class="col-sm-10">
-                        <input  type="email" class="form-control" id="inputemail" data-bind="value:email"/>
-                        <label id="labelemail" data-bind="text:email"/>
+                        <input name="email" class="form-control" id="inputemail" data-bind="value:email"/>
+                        <label class="control-label" id="labelemail" data-bind="text:email"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputwebsite" class="col-sm-2 control-label">Website</label>
+                    <label for="inputwebsite" class="col-sm-2 control-label">Website : </label>
                     <div class="col-sm-10">
-                        <input type="url" class="form-control" id="inputwebsite" data-bind="value:website" value=" "/>
-                        <label id="labelwebsite" data-bind="text:website" value=" "/>
+                        <input type="url" name="website" data-fv-uri-message="The website address is not valid" class="form-control" id="inputwebsite" data-bind="value:website" value=" "/>
+                        <label class="control-label" id="labelwebsite" data-bind="text:website" value=" "/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputdepartment" class="col-sm-2 control-label">Department</label>
+                    <label for="inputdepartment" class="col-sm-2 control-label">Department : </label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" value="Engineering" id="inputdepartment" data-bind="value:department"/>
-                        <label value="Engineering" id="labeldepartment" data-bind="text:department"/>
+                        <label class="control-label" value="Engineering" id="labeldepartment" data-bind="text:department"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputskills" class="col-sm-2 control-label">Skills</label>
+                    <label for="inputskills" class="col-sm-2 control-label">Skills : </label>
                     <label class="checkbox-inline" id="skillsCheckbox1">
                         <input type="checkbox" value="HTML" data-bind="checked:skills" >HTML
                     </label>
@@ -144,12 +184,18 @@
                     <label class="checkbox-inline" id="skillsCheckbox3">
                         <input type="checkbox" value="Javascript" data-bind="checked:skills">Javascript
                     </label>
-                    <label id="labelskills" data-bind="text:skills"/>
+                    <label class="control-label" id="labelskills" data-bind="text:skills"/>
                 </div>
-                <button id="editauthor" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : editauthordetails">EDIT</button>
-                <button id="deleteauthor" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : deleteauthor">DELETE</button>
-                <button id="saveauthor" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : saveauthor">SAVE</button>
+                <div class="container text-center">
+                    <button id="editauthor" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : editauthordetails"><b>EDIT</b></button>
+                    <button id="deleteauthor" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : deleteauthor"><b>DELETE</b></button>
+                    <button id="saveauthor" type="submit" class="btn btn-info buttons" data-dismiss="modal" data-bind="click : saveauthor"><b>SAVE</b></button>
+                </div>
             </form>
+        </div>
+        
+        <div class="container getlist">
+            <button class="btn btn-info btn-info" data-bind="click:getlist,visible:visibility6"><b>GO TO LIST</b></button>
         </div>
         
         <!--Modal for new book-->
@@ -199,8 +245,8 @@
                                 </label>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-info" data-bind="enable:isbn()!='' && title()!='' && author()!='' && price()!='' && availability()!='',click : addbook">Submit</button>
-                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                <button id="submitbook" type="submit" class="btn btn-info" data-bind="enable:isbn()!='' && title()!='' && author()!='' && price()!='' && availability()!='',click : addbook">Submit</button>
+                                <button id="cancelbook" type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
                             </div>
                     </div>
                     
@@ -263,8 +309,8 @@
                                 </label>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-info" data-bind="enable:empid()!='' && name()!='' && email()!='' && skills()!='',click : addauthor">Submit</button>
-                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                <button id="submitauthor" type="submit" class="btn btn-info" data-bind="enable:empid()!='' && name()!='' && email()!='' && skills()!='',click:addauthor">Submit</button>
+                                <button id="cancelauthor" type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
                             </div>
                     </div>
                     </form>
