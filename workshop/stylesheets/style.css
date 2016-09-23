@@ -21,7 +21,6 @@
 }
 
 .home {
-    background-color:azure;
     margin-top: 20px;
 }
 
@@ -50,4 +49,8 @@
 
 .carouselcontainer {
     margin-top: 50px;
+}
+
+.booktable {
+    background-color: azure;
 }
